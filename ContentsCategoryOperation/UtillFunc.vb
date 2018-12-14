@@ -122,6 +122,7 @@ Public Class UtillFunc
         sheet.Cell("C6").Value = "-"
 
         'なぜかセルの書式設定が2行目以降反映されないので解決策
+        '1行目のセルを2行目以降にコピー
         Dim count As Integer : count = 0
         Dim copy As IXLRange = sheet.Range("A10:J10") 'コピー範囲
         Dim paste As IXLRange '貼り付け範囲
