@@ -1,4 +1,4 @@
-﻿'　コンテンツカテゴリクラス
+﻿'コンテンツカテゴリクラス
 
 Public Class ContentsCategory
 

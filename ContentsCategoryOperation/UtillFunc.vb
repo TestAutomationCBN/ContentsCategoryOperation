@@ -74,7 +74,11 @@ Public Class UtillFunc
     ' コンテンツカテゴリリストから、XMLファイルを生成する関数
     Public Sub ContentsCategoryListtoXML(catList As ArrayList, export_filepath As String)
 
+<<<<<<< HEAD
+        Dim sw As New System.IO.StreamWriter(export_filepath & "\content_category.xml", False, System.Text.Encoding.GetEncoding("utf-8"))
+=======
         Dim sw As New System.IO.StreamWriter(export_filepath, False, System.Text.Encoding.GetEncoding("utf-8"))
+>>>>>>> 2a1a87c3b3361a208e5ad00cc1673068c2567ae3
 
         sw.Write("<?xml version=""1.0"" encoding=""UTF-8""?>" & vbCrLf)
         sw.Write("<root>" & vbCrLf)
@@ -83,6 +87,24 @@ Public Class UtillFunc
             sw.Write("    <category bgColor=""" & cat.GetbgColor & """ catId=""" & cat.GetcatId & """ orderLnNo=""" & cat.GetorderLnNo & """ upperCatId=""" & cat.GetupCatId & """ versionCnt=""0"">" & vbCrLf)
             sw.Write("        <catNm><![CDATA[" & cat.GetcatNm & "]]></catNm>" & vbCrLf)
             sw.Write("        <catExp/>" & vbCrLf)
+<<<<<<< HEAD
+            If cat.GetafieldId_01 <> "" Or cat.GetafieldId_02 <> "" Or cat.GetafieldId_03 <> "" Then
+                sw.Write("        <afields>" & vbCrLf)
+                If cat.GetafieldId_01 <> "" Then
+                    sw.Write("            <afield afieldId=""" & cat.GetafieldId_01 & """ orderLnNo=""1""/>" & vbCrLf)
+                End If
+                If cat.GetafieldId_02 <> "" Then
+                    sw.Write("            <afield afieldId=""" & cat.GetafieldId_02 & """ orderLnNo=""2""/>" & vbCrLf)
+                End If
+                If cat.GetafieldId_03 <> "" Then
+                    sw.Write("            <afield afieldId=""" & cat.GetafieldId_03 & """ orderLnNo=""3""/>" & vbCrLf)
+                End If
+                sw.Write("        </afields>" & vbCrLf)
+            Else
+                sw.Write("        <afields/>" & vbCrLf)
+            End If
+
+=======
             sw.Write("        <afields>" & vbCrLf)
             If cat.GetafieldId_01 <> "" Then
                 sw.Write("            <afield afieldId=""" & cat.GetafieldId_01 & """ orderLnNo=""1""/>" & vbCrLf)
@@ -93,6 +115,7 @@ Public Class UtillFunc
             If cat.GetafieldId_03 <> "" Then
                 sw.Write("            <afield afieldId=""" & cat.GetafieldId_03 & """ orderLnNo=""3""/>" & vbCrLf)
             End If
+>>>>>>> 2a1a87c3b3361a208e5ad00cc1673068c2567ae3
             sw.Write("    </category>" & vbCrLf)
         Next
 
@@ -122,7 +145,10 @@ Public Class UtillFunc
         sheet.Cell("C6").Value = "-"
 
         'なぜかセルの書式設定が2行目以降反映されないので解決策
+<<<<<<< HEAD
+=======
         '1行目のセルを2行目以降にコピー
+>>>>>>> 2a1a87c3b3361a208e5ad00cc1673068c2567ae3
         Dim count As Integer : count = 0
         Dim copy As IXLRange = sheet.Range("A10:J10") 'コピー範囲
         Dim paste As IXLRange '貼り付け範囲

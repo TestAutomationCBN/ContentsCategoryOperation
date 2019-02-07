@@ -155,5 +155,10 @@ Public Class ContentsGategoryOperation
     Private Sub ContentsGategoryOperation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
-End Class
 
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
+    End Sub
+
+End Class
