@@ -74,7 +74,20 @@ Public Class UtillFunc
     ' コンテンツカテゴリリストから、XMLファイルを生成する関数
     Public Sub ContentsCategoryListtoXML(catList As ArrayList, export_filepath As String)
 
-        Dim sw As New System.IO.StreamWriter(export_filepath & "\content_category.xml", False, System.Text.Encoding.GetEncoding("utf-8"))
+        Dim fileName As String = "\content_category"
+
+        '保存しようとしたファイル名と既に同じファイル名が存在するならば、ファイル名末尾に(k)をつける
+        If Dir(export_filepath & fileName & ".xml") <> "" Then
+            Dim k As Integer
+            k = 1
+
+            While Dir(export_filepath & fileName & ".xml") <> ""
+                fileName = "\content_category" & " (" & k & ")"
+                k += 1
+            End While
+        End If
+
+        Dim sw As New System.IO.StreamWriter(export_filepath & fileName & ".xml", False, System.Text.Encoding.GetEncoding("utf-8"))
 
         sw.Write("<?xml version=""1.0"" encoding=""UTF-8""?>" & vbCrLf)
         sw.Write("<root>" & vbCrLf)
@@ -129,7 +142,7 @@ Public Class UtillFunc
 
         'なぜかセルの書式設定が2行目以降反映されないので解決策
         '1行目のセルを2行目以降にコピー
-        Dim count As Integer : count = 0
+        Dim count As Integer : count = 1
         Dim copy As IXLRange = sheet.Range("A10:J10") 'コピー範囲
         Dim paste As IXLRange '貼り付け範囲
         For Each cat As ContentsCategory In catList
@@ -156,8 +169,21 @@ Public Class UtillFunc
             sheet.Cell("J" & (count + 9)).Value = "" '備考
         Next
 
+        Dim fileName As String = "\コンテンツカテゴリテスト仕様書"
+
+        '保存しようとしたファイル名と既に同じファイル名が存在するならば、ファイル名末尾に(k)をつける
+        If Dir(export_filepath & fileName & ".xlsx") <> "" Then
+            Dim k As Integer
+            k = 1
+
+            While Dir(export_filepath & fileName & ".xlsx") <> ""
+                fileName = "\コンテンツカテゴリテスト仕様書" & " (" & k & ")"
+                k += 1
+            End While
+        End If
+
         '保存
-        base.SaveAs(export_filepath & "\テスト仕様書.xlsx")
+        base.SaveAs(export_filepath & fileName & ".xlsx")
 
     End Sub
 
