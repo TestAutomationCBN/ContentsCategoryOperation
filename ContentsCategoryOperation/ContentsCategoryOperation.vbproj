@@ -176,7 +176,11 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <Content Include="README.txt" />
     <Content Include="TestBase\con_base.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ツール専用コンテンツカテゴリ設計書.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
